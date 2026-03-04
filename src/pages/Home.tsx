@@ -115,10 +115,13 @@ export default function Home() {
               
               {/* Main Image */}
               <img
-                src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop"
-                alt="Professional Plumber"
+                src="https://img.freepik.com/free-photo/technician-checking-heating-system-boiler-room_219623891.jpg"
+                alt="Technician checking heating system"
                 className="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[500px] border border-white/10"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop";
+                }}
               />
             </div>
           </div>
