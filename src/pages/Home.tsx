@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ArrowRight, Star, CheckCircle2, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Phone, ArrowRight, Star, CheckCircle2, MapPin, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { BUSINESS_INFO, SERVICES, WHY_CHOOSE_US, TESTIMONIALS } from '../config';
 
 export default function Home() {
@@ -48,56 +48,92 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 font-medium text-sm mb-6 border border-blue-500/30">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-              24/7 Emergency Service Available
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-              Fast & Reliable <br className="hidden md:block" />
-              <span className="text-blue-400">Plumbing Services</span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
-              Professional, licensed plumbers ready to tackle any issue. From minor leaks to major installations, we've got you covered.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9+]/g, '')}`}
-                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:-translate-y-0.5"
-              >
-                <Phone className="w-5 h-5" />
-                Call Now
-              </a>
-              <a
-                href={`https://wa.me/${BUSINESS_INFO.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all"
-              >
-                WhatsApp Us
-              </a>
-            </div>
-            
-            <div className="mt-10 flex items-center gap-4 text-sm text-slate-400 font-medium">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <img
-                    key={i}
-                    src={`https://picsum.photos/seed/face${i}/100/100`}
-                    alt="Customer"
-                    className="w-10 h-10 rounded-full border-2 border-slate-900 object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 font-medium text-sm mb-6 border border-blue-500/30">
+                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                24/7 Emergency Service Available
               </div>
-              <div>
-                <div className="flex items-center gap-1 text-yellow-400 mb-0.5">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                Fast & Reliable <br className="hidden md:block" />
+                <span className="text-blue-400">Plumbing Services</span>
+              </h1>
+              <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
+                Professional, licensed plumbers ready to tackle any issue. From minor leaks to major installations, we've got you covered.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9+]/g, '')}`}
+                  className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:-translate-y-0.5"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call Now
+                </a>
+                <a
+                  href={`https://wa.me/${BUSINESS_INFO.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all"
+                >
+                  WhatsApp Us
+                </a>
+              </div>
+              
+              <div className="mt-10 flex items-center gap-4 text-sm text-slate-400 font-medium">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4].map((i) => (
+                    <img
+                      key={i}
+                      src={`https://picsum.photos/seed/face${i}/100/100`}
+                      alt="Customer"
+                      className="w-10 h-10 rounded-full border-2 border-slate-900 object-cover"
+                      referrerPolicy="no-referrer"
+                    />
                   ))}
                 </div>
-                Trusted by 500+ locals
+                <div>
+                  <div className="flex items-center gap-1 text-yellow-400 mb-0.5">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  Trusted by 500+ locals
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Image and Video */}
+            <div className="hidden lg:block relative">
+              <div className="absolute inset-0 bg-blue-500 rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
+              
+              {/* Main Image */}
+              <img
+                src="https://picsum.photos/seed/plumbinghero/600/700"
+                alt="Professional Plumber"
+                className="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[500px] border border-white/10"
+                referrerPolicy="no-referrer"
+              />
+              
+              {/* Video Overlay Card */}
+              <div className="absolute -bottom-10 -left-10 z-20 bg-white p-3 rounded-2xl shadow-xl w-64 border border-slate-100 animate-bounce" style={{ animationDuration: '3s' }}>
+                <div className="relative rounded-xl overflow-hidden aspect-video bg-slate-100 group cursor-pointer">
+                  <img 
+                    src="https://picsum.photos/seed/plumbingvideo/400/225" 
+                    alt="Video thumbnail" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+                    <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center text-blue-600 shadow-lg group-hover:scale-110 transition-transform">
+                      <Play className="w-5 h-5 ml-1" />
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-3 px-1">
+                  <p className="text-sm font-bold text-slate-900">See us in action</p>
+                  <p className="text-xs text-slate-500">1:24 min video</p>
+                </div>
               </div>
             </div>
           </div>
