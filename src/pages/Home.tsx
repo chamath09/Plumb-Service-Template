@@ -115,7 +115,7 @@ export default function Home() {
               
               {/* Main Image */}
               <img
-                src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2070&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop"
                 alt="Professional Plumber"
                 className="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[500px] border border-white/10"
                 referrerPolicy="no-referrer"
