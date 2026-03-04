@@ -109,38 +109,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: Image and Video */}
+            {/* Right Column: Image */}
             <div className="hidden lg:block relative">
               <div className="absolute inset-0 bg-blue-500 rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
               
               {/* Main Image */}
               <img
-                src="https://picsum.photos/seed/plumbinghero/600/700"
+                src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2070&auto=format&fit=crop"
                 alt="Professional Plumber"
                 className="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[500px] border border-white/10"
                 referrerPolicy="no-referrer"
               />
-              
-              {/* Video Overlay Card */}
-              <div className="absolute -bottom-10 -left-10 z-20 bg-white p-3 rounded-2xl shadow-xl w-64 border border-slate-100 animate-bounce" style={{ animationDuration: '3s' }}>
-                <div className="relative rounded-xl overflow-hidden aspect-video bg-slate-100 group cursor-pointer">
-                  <img 
-                    src="https://picsum.photos/seed/plumbingvideo/400/225" 
-                    alt="Video thumbnail" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors">
-                    <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center text-blue-600 shadow-lg group-hover:scale-110 transition-transform">
-                      <Play className="w-5 h-5 ml-1" />
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-3 px-1">
-                  <p className="text-sm font-bold text-slate-900">See us in action</p>
-                  <p className="text-xs text-slate-500">1:24 min video</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
