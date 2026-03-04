@@ -1,9 +1,15 @@
 import { CheckCircle2, ShieldCheck, Award, Users } from 'lucide-react';
+import { motion } from 'motion/react';
 import { BUSINESS_INFO } from '../config';
 
 export default function About() {
   return (
-    <div className="flex flex-col w-full">
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }}
+      className="flex flex-col w-full"
+    >
       {/* Page Header */}
       <section className="bg-slate-900 text-white py-20 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
@@ -27,7 +33,12 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1 relative">
+            <motion.div 
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1 relative"
+            >
               <div className="absolute -inset-4 bg-slate-100 rounded-3xl transform -rotate-3 z-0"></div>
               <img
                 src="https://picsum.photos/seed/plumbingteam/800/1000"
@@ -40,9 +51,14 @@ export default function About() {
                 <div className="text-4xl font-black mb-1">{BUSINESS_INFO.yearsOfExperience}</div>
                 <div className="text-sm font-medium text-blue-100 uppercase tracking-wider">Years Experience</div>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="order-1 lg:order-2">
+            <motion.div 
+              initial={{ x: 20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
                 Setting the Standard in Plumbing Excellence
               </h2>
@@ -76,7 +92,7 @@ export default function About() {
                   <span className="font-bold text-slate-900">Upfront Pricing</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -84,35 +100,60 @@ export default function About() {
       {/* Values Section */}
       <section className="py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-16 tracking-tight">Our Core Values</h2>
+          <motion.h2 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-slate-900 mb-16 tracking-tight"
+          >
+            Our Core Values
+          </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300"
+            >
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-6">
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Integrity</h3>
               <p className="text-slate-600">We believe in honest work, transparent pricing, and never recommending services you don't need.</p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300"
+            >
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-6">
                 <Award className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Quality</h3>
               <p className="text-slate-600">We use premium materials and proven techniques to ensure our repairs and installations last.</p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300"
+            >
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-6">
                 <Users className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Community</h3>
               <p className="text-slate-600">As a local business, we treat every customer like a neighbor, because that's exactly what you are.</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, ArrowRight, Star, CheckCircle2, MapPin, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { motion } from 'motion/react';
 import { BUSINESS_INFO, SERVICES, WHY_CHOOSE_US, TESTIMONIALS } from '../config';
 
 export default function Home() {
@@ -33,7 +34,12 @@ export default function Home() {
   const prevTestimonial = () => setActiveTestimonial((prev) => (prev <= 0 ? maxIndex : prev - 1));
 
   return (
-    <div className="flex flex-col w-full overflow-hidden">
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }}
+      className="flex flex-col w-full overflow-hidden"
+    >
       {/* Hero Section */}
       <section className="relative bg-slate-900 text-white pt-24 pb-32 md:pt-32 md:pb-40 overflow-hidden">
         {/* Background Image Overlay */}
@@ -141,51 +147,69 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">Our Plumbing Services</h2>
             <p className="text-lg text-slate-600">
               Comprehensive plumbing solutions for your home or business. We handle everything with expertise and care.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.slice(0, 6).map((service) => {
+            {SERVICES.slice(0, 6).map((service, index) => {
               const Icon = service.icon;
               return (
-                <div key={service.id} className="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
-                  <div className="relative z-10">
-                    <div className="w-14 h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
-                    <p className="text-slate-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-                    <Link to="/services" className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                      Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                <motion.div 
+                  key={service.id} 
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group bg-white rounded-2xl p-8 border border-slate-200 hover:border-blue-600 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 relative overflow-hidden"
+                >
+                  <div className="w-14 h-14 bg-blue-600 rounded-xl shadow-md flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
+                    <Icon className="w-7 h-7" />
                   </div>
-                </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+                  <p className="text-slate-600 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+                  <Link to="/services" className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                    Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
               );
             })}
           </div>
 
-          <div className="mt-12 text-center">
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
+          >
             <Link to="/services" className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-3.5 rounded-xl font-medium transition-colors">
               View All Services
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="py-20 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
                 Why Choose <span className="text-blue-600">{BUSINESS_INFO.name}</span>?
               </h2>
@@ -197,7 +221,14 @@ export default function Home() {
                 {WHY_CHOOSE_US.map((item, index) => {
                   const Icon = item.icon;
                   return (
-                    <div key={index} className="flex gap-4">
+                    <motion.div 
+                      key={index} 
+                      initial={{ y: 10, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex gap-4"
+                    >
                       <div className="shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                         <Icon className="w-6 h-6" />
                       </div>
@@ -205,13 +236,18 @@ export default function Home() {
                         <h4 className="text-xl font-bold text-slate-900 mb-1">{item.title}</h4>
                         <p className="text-slate-600">{item.description}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
             
-            <div className="relative">
+            <motion.div 
+              initial={{ x: 20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
               <div className="absolute inset-0 bg-blue-600 rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
               <img
                 src="https://picsum.photos/seed/plumbingwork/800/1000"
@@ -227,22 +263,30 @@ export default function Home() {
                 </div>
                 <p className="text-sm text-slate-600 font-medium">Of trusted local service experience</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-20 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">What Our Customers Say</h2>
             <p className="text-lg text-slate-600">
               Don't just take our word for it. Here's what your neighbors think about our service.
             </p>
-          </div>
+          </motion.div>
 
-          <div 
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
             className="relative max-w-7xl mx-auto"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -255,7 +299,7 @@ export default function Home() {
               >
                 {TESTIMONIALS.map((testimonial) => (
                   <div key={testimonial.id} className="w-full md:w-1/2 lg:w-1/3 shrink-0 px-4">
-                    <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm h-full flex flex-col">
+                    <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm h-full flex flex-col">
                       <div className="flex items-center gap-1 text-yellow-400 mb-6">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-5 h-5 fill-current" />
@@ -319,7 +363,7 @@ export default function Home() {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -339,7 +383,11 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+            >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">Need a Plumber Right Now?</h2>
               <p className="text-blue-100 text-lg mb-8 max-w-lg leading-relaxed">
                 Our team is standing by to help you with any plumbing issue. Fast response times and professional service guaranteed.
@@ -353,9 +401,14 @@ export default function Home() {
                   Call {BUSINESS_INFO.phone}
                 </a>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10">
+            <motion.div 
+              initial={{ x: 20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10"
+            >
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                 <MapPin className="w-6 h-6 text-blue-300" />
                 Areas We Serve
@@ -368,10 +421,10 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }

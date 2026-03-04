@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { BUSINESS_INFO } from '../config';
 
 export default function Contact() {
@@ -33,7 +34,12 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }}
+      className="flex flex-col w-full"
+    >
       {/* Page Header */}
       <section className="bg-slate-900 text-white py-20 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
@@ -58,7 +64,11 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             {/* Contact Info */}
-            <div>
+            <motion.div 
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+            >
               <h2 className="text-3xl font-bold text-slate-900 mb-8 tracking-tight">We're Here to Help</h2>
               <p className="text-lg text-slate-600 mb-10">
                 Whether you have a leaky faucet or need a complete plumbing overhaul, our team is ready to assist you. Contact us using the details below or fill out the form.
@@ -115,10 +125,15 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
             
             {/* Contact Form */}
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100">
+            <motion.div 
+              initial={{ x: 20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100"
+            >
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Send a Message</h3>
               
               {isSuccess ? (
@@ -221,7 +236,7 @@ export default function Contact() {
                   </button>
                 </form>
               )}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -247,6 +262,6 @@ export default function Contact() {
           loading="lazy"
         ></iframe> */}
       </section>
-    </div>
+    </motion.div>
   );
 }
